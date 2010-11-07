@@ -1,4 +1,6 @@
 DemoFlexObservers::Application.routes.draw do
+  resources :users
+
   resources :sites
 
   # The priority is based upon order of creation:
