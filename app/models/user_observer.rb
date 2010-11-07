@@ -1,7 +1,10 @@
 class UserObserver < ActiveRecord::Observer
-  def after_save(site)
+  def after_save(user)
     sync_site_info(user)
-    sync_site_user_info(user)
+  end
+
+  def after_destroy(user)
+    delete_record_for_site_user_info(user)
   end
 
   private
@@ -9,9 +12,9 @@ class UserObserver < ActiveRecord::Observer
     if user.owner
       owner_user = user
       site = user.site
-      if (owner_user.name != site.contact_name) || (owner_user.email != site.contact_email)
-        site.contact_name = owner_user.name
-        site.contact_email = owner_user.email
+      if (owner_user.name != site.owner_name) || (owner_user.email != site.owner_email)
+        site.owner_name = owner_user.name
+        site.owner_email = owner_user.email
         site.without_observers("SiteObserver") do
           site.save
         end
@@ -19,7 +22,8 @@ class UserObserver < ActiveRecord::Observer
     end
   end
 
-  def sync_site_user_info(user)
-    SiteUserInfo.update_or_create_by_user(user)
+  def delete_record_for_site_user_info(user)
+    site_user_info = SiteUserInfo.where(:user_id => user.id, :site_id => user.site_id).first
+    site_user_info.destroy if site_user_info
   end
 end
