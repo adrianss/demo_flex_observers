@@ -7,7 +7,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+  <%= link_to "Sites", sites_path %>
+  <%= link_to "Users", users_path %>
+  <%= link_to "SiteUserInfo", :controller => "site_user_infos",
+  :action => "index" %>
 <%= yield %>
 
 </body>
