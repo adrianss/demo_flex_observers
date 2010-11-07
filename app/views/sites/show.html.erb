@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Owner name:</b>
+  <%= @site.owner_name %>
+</p>
+
+<p>
+  <b>Owner email:</b>
+  <%= @site.owner_email %>
+</p>
+
+<p>
+  <b>Domain:</b>
+  <%= @site.domain %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>
