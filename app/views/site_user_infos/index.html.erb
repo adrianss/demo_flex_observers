@@ -1,0 +1,29 @@
+<h1>Listing site_user_infos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Image url</th>
+    <th>Domain</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_user_infos.each do |site_user_info| %>
+  <tr>
+    <td><%= site_user_info.name %></td>
+    <td><%= site_user_info.email %></td>
+    <td><%= site_user_info.image_url %></td>
+    <td><%= site_user_info.domain %></td>
+    <td><%= link_to 'Show', site_user_info %></td>
+    <td><%= link_to 'Edit', edit_site_user_info_path(site_user_info) %></td>
+    <td><%= link_to 'Destroy', site_user_info, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site user info', new_site_user_info_path %>

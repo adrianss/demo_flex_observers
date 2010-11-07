@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @site_user_info.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @site_user_info.email %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @site_user_info.image_url %>
+</p>
+
+<p>
+  <b>Domain:</b>
+  <%= @site_user_info.domain %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_user_info_path(@site_user_info) %> |
+<%= link_to 'Back', site_user_infos_path %>

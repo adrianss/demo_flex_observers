@@ -1,4 +1,6 @@
 DemoFlexObservers::Application.routes.draw do
+  resources :site_user_infos
+
   resources :users
 
   resources :sites

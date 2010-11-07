@@ -1,0 +1,2 @@
+module SiteUserInfosHelper
+end
